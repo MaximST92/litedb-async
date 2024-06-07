@@ -14,11 +14,11 @@
     <Summary>LiteDB.Async - A lightweight async wrapper for LiteDB</Summary>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>LiteDBAsyncStrongNameKey.snk</AssemblyOriginatorKeyFile>
-		<AssemblyName>LiteDB.Async</AssemblyName>
+    <AssemblyName>LiteDB.Async</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LiteDB" Version="5.0.17" />
+    <PackageReference Include="LiteDB" Version="5.0.20" />
   </ItemGroup>
 
 </Project>
