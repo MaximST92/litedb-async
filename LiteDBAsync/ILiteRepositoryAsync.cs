@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using LiteDB.Async;
 
-namespace LiteDB.async
+namespace LiteDB.Async
 {
   public interface ILiteRepositoryAsync : IDisposable
   {
