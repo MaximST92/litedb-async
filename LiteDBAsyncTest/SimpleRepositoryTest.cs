@@ -68,9 +68,9 @@ namespace Tests.LiteDB.Async
 
 
         [Fact]
-        public async Task InsertAsyncAndTest()
+        public async Task InsertAsync()
         {
-            var insertedPerson = await InsertAsync();
+            var insertedPerson = await InsertPersonAsync();
 
             var resultPerson = await _repo.SingleByIdAsync<SimplePerson>(insertedPerson.Id);
             Assert.Equal(insertedPerson.Id, resultPerson.Id);
@@ -102,7 +102,7 @@ namespace Tests.LiteDB.Async
         public async Task UpdateAsync()
         {
 
-            var insertedPerson = await InsertAsync();
+            var insertedPerson = await InsertPersonAsync();
             var person = await _repo.FirstOrDefaultAsync<SimplePerson>(x => x.Id == insertedPerson.Id);
 
             person.FirstName = "Hallo";
@@ -157,7 +157,7 @@ namespace Tests.LiteDB.Async
         public async Task DeleteAsync()
         {
             
-            var insertedPerson = await InsertAsync();
+            var insertedPerson = await InsertPersonAsync();
             var simplePerson = await _repo.SingleAsync<SimplePerson>(x => x.Id == insertedPerson.Id);
             bool deleteResult = await _repo.DeleteAsync<SimplePerson>(simplePerson.Id);
             deleteResult.Should().BeTrue();
@@ -214,7 +214,7 @@ namespace Tests.LiteDB.Async
             return list;
         }
 
-        private async Task<SimplePerson> InsertAsync()
+        private async Task<SimplePerson> InsertPersonAsync()
         {
             var person = new SimplePerson()
             {
