@@ -68,22 +68,14 @@ namespace Tests.LiteDB.Async
 
 
         [Fact]
-        public async Task<Guid> InsertAsync()
+        public async Task InsertAsyncAndTest()
         {
+            var insertedPerson = await InsertAsync();
 
-            var person = new SimplePerson()
-            {
-                FirstName = "John",
-                LastName = "Smith"
-            };
-
-            await _repo.InsertAsync(person);
-
-            var resultPerson = await _repo.SingleByIdAsync<SimplePerson>(person.Id);
-            Assert.Equal(person.Id, resultPerson.Id);
-            Assert.Equal(person.FirstName, resultPerson.FirstName);
-            Assert.Equal(person.LastName, resultPerson.LastName);
-            return resultPerson.Id;
+            var resultPerson = await _repo.SingleByIdAsync<SimplePerson>(insertedPerson.Id);
+            Assert.Equal(insertedPerson.Id, resultPerson.Id);
+            Assert.Equal(insertedPerson.FirstName, resultPerson.FirstName);
+            Assert.Equal(insertedPerson.LastName, resultPerson.LastName);
         }
         
         
@@ -110,8 +102,8 @@ namespace Tests.LiteDB.Async
         public async Task UpdateAsync()
         {
 
-            var id = await InsertAsync();
-            var person = await _repo.FirstOrDefaultAsync<SimplePerson>(x=>x.Id==id);
+            var insertedPerson = await InsertAsync();
+            var person = await _repo.FirstOrDefaultAsync<SimplePerson>(x => x.Id == insertedPerson.Id);
 
             person.FirstName = "Hallo";
             person.LastName = "Helga";
@@ -165,8 +157,8 @@ namespace Tests.LiteDB.Async
         public async Task DeleteAsync()
         {
             
-            var id = await InsertAsync();
-            var simplePerson = await _repo.SingleAsync<SimplePerson>(x=>x.Id==id);
+            var insertedPerson = await InsertAsync();
+            var simplePerson = await _repo.SingleAsync<SimplePerson>(x => x.Id == insertedPerson.Id);
             bool deleteResult = await _repo.DeleteAsync<SimplePerson>(simplePerson.Id);
             deleteResult.Should().BeTrue();
             
@@ -220,6 +212,19 @@ namespace Tests.LiteDB.Async
                 },
             };
             return list;
+        }
+
+        private async Task<SimplePerson> InsertAsync()
+        {
+            var person = new SimplePerson()
+            {
+                FirstName = "John",
+                LastName = "Smith"
+            };
+
+            await _repo.InsertAsync(person);
+
+            return person;
         }
     }
 }
