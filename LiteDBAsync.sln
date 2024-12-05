@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "litedb-async", "litedb-asyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteDBAsync", "LiteDBAsync\LiteDBAsync.csproj", "{DF52CFCB-1BF4-415F-9B40-59F605D70C2B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{36754323-E122-4575-999F-75FC07D7A668}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36754323-E122-4575-999F-75FC07D7A668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36754323-E122-4575-999F-75FC07D7A668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DA93B00-6913-4F9A-BAF3-6A18109E6F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4DA93B00-6913-4F9A-BAF3-6A18109E6F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DA93B00-6913-4F9A-BAF3-6A18109E6F72}.Debug|x64.ActiveCfg = Debug|Any CPU
