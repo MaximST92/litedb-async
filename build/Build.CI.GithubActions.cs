@@ -2,7 +2,7 @@ using Nuke.Common.CI.GitHubActions;
 
 [GitHubActions(
 	"pr",
-	GitHubActionsImage.WindowsLatest,
+	GitHubActionsImage.UbuntuLatest,
 	On = [GitHubActionsTrigger.PullRequest],
 	InvokedTargets = [nameof(Pack)],
 	AutoGenerate = false,
